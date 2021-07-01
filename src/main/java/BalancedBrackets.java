@@ -20,11 +20,17 @@ public class BalancedBrackets {
      */
     public static boolean hasBalancedBrackets(String str) {
         int brackets = 0;
+        //toCharArray() method: string method that splits a string into an array of characters
+        // if out input string / "[][]}, then str.toCHarArray() = ["[","]","[","]"];
         for (char ch : str.toCharArray()) {
             if (ch == '[') {
-                brackets++;
+                brackets++; //add onto brackets, brackets = brackets + 1
             } else if (ch == ']') {
-                brackets--;
+                brackets--; //decrement brackets, brackets = brackets - 1
+                //added conditional to help testClosingThenOpeningBracket() to pass.
+                if(brackets < 0){
+                    return false;
+                }
             }
         }
         return brackets == 0;
